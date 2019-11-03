@@ -1,0 +1,12 @@
+package org.jimzh.mini.events.service;
+
+import org.jimzh.mini.events.model.Event;
+import java.util.List;
+
+public class EventService {
+
+	public List<Event> getAllEvents() {
+		
+	}
+	
+}

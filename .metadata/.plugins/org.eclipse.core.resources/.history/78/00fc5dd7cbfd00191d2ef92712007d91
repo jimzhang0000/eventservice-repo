@@ -1,0 +1,5 @@
+package org.jimzh.mini.events.exception;
+
+public class DataNotFoundException extends RuntimeException {
+
+}

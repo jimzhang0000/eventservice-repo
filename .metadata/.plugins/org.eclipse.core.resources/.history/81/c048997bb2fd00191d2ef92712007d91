@@ -1,0 +1,33 @@
+package org.jimzh.mini.events.resources;
+
+import java.util.List;
+import java.util.UUID;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.jimzh.mini.events.model.Event;
+import org.jimzh.mini.events.service.EventService;
+
+@Path("/events_list_all")
+public class EventsResource {
+
+	EventService eventservice = new EventService();
+	
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Event> getEvents() {
+		return eventservice.getAllEvents();
+	}
+	
+	@GET
+	@Path("/{eventId}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Event getEvent(@PathParam("eventId") UUID eventId) {
+		return eventservice.getEvent(eventId);
+	}
+	
+}

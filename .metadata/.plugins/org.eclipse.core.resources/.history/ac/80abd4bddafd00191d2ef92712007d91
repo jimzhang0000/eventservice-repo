@@ -1,0 +1,5 @@
+package org.jimzh.mini.events.resources;
+
+public class EventServiceTest {
+
+}

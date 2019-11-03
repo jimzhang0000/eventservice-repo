@@ -1,0 +1,15 @@
+package org.jimzh.mini.events.database;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import org.jimzh.mini.events.model.*;
+
+public class DbClass {
+
+	private static Map<UUID, Event> events = new HashMap<>();
+	
+	public static Map<UUID, Event> getEvents() {
+		return events;
+	}
+}

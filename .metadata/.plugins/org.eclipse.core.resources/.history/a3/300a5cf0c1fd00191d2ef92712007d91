@@ -1,0 +1,57 @@
+package org.jimzh.mini.events.service;
+
+import java.util.UUID;
+import org.jimzh.mini.events.database.DbClass;
+import org.jimzh.mini.events.model.Event;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+public class EventService {
+
+	private Map<UUID, Event> events = DbClass.getEvents();
+	
+	public EventService() {
+		final UUID id1 = UUID.randomUUID();
+		final UUID id2 = UUID.randomUUID();
+		final UUID id3 = UUID.randomUUID();
+		Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
+		Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
+		Timestamp timestamp3 = new Timestamp(System.currentTimeMillis());
+		
+		events.put(id1, new Event(id1, "Breakfast", timestamp1, "address1 "));
+		events.put(id2, new Event(id2, "Lunch", timestamp2, "address2  "));
+		events.put(id3, new Event(id3, "Dinner", timestamp3, "address3 "));
+		
+	}
+	public Event getEvent(UUID Id) {
+		return events.get(Id);
+	}
+	
+	public List<Event> getAllEvents() {
+		return new ArrayList<Event>(events.values());
+	}
+	
+	public Event addEvent(Event event) {
+		event.setId(UUID.randomUUID());
+		events.put(event.getId(), event);
+		return event;
+	}
+	
+
+//	public List<Event> getAllEvents() {
+//		Event e1 = new Event(UUID.randomUUID(), "Events: Dinner", null, "10564 30th Dr NE, Seattle, WA" );
+//		Event e2 = new Event(UUID.randomUUID(), "Events: Breakfast", null, "10896 31th Dr NE, Seattle, WA" );
+//		
+//		List<Event> list = new ArrayList<>();
+//		list.add(e1);
+//		list.add(e2);
+
+//		return list;
+//	}
+
+		
+}

@@ -1,0 +1,13 @@
+package org.jimzh.mini.events.model;
+
+import java.util.Date;
+
+public class Event {
+	private GUID Id;
+	private String Name;
+	private Date EventDate;
+	private String Address;
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package org.jimzh.mini.events.service;
+
+import org.jimzh.mini.events.model.Event;
+import java.util.List;
+
+public class EventService {
+
+	public List<Event> getAllEvents() {
+		Event e1 = new Event("5fc03087-d265-11e7-b9c6-83e29cd24f5c", "Events Name1", "", "" );
+	}
+	
+}

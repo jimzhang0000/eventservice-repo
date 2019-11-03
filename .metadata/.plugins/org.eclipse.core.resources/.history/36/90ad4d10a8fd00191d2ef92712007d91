@@ -1,0 +1,27 @@
+package org.jimzh.mini.events.service;
+
+import java.util.UUID;
+import org.jimzh.mini.events.database.DbClass;
+import org.jimzh.mini.events.model.Event;
+import java.util.ArrayList;
+import java.util.List;
+
+public class EventService {
+
+	private Map<UUID, Event> events = DbClass.getEvents();
+	
+	
+	public List<Event> getAllEvents() {
+		Event e1 = new Event(UUID.fromString("a81d4e2e-bcf2-11e6-869b-7df92533d2da"), "Events: Dinner", null, "10564 30th Dr NE, Seattle, WA" );
+		Event e2 = new Event(UUID.fromString("b81d4e5e-bcf2-11e6-869b-7df92536d2db"), "Events: Breakfast", null, "10896 31th Dr NE, Seattle, WA" );
+		Event e3 = new Event(UUID.fromString("c81d4e5e-bcf2-11e6-869b-7df92536d2dc"), "Events: Lunch", null, "10894 32th Dr NE, Seattle, WA" );
+		
+		List<Event> list = new ArrayList<>();
+		list.add(e1);
+		list.add(e2);
+		list.add(e3);
+		return list;
+	}
+
+		
+}

@@ -1,0 +1,5 @@
+package org.jimzh.mini.events.database;
+
+public class DbClass {
+
+}

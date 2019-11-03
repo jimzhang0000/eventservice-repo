@@ -1,0 +1,16 @@
+package org.jimzh.mini.events.service;
+
+import java.util.UUID;
+import org.jimzh.mini.events.model.Event;
+import java.util.List;
+
+public class EventService {
+
+	public List<Event> getAllEvents() {
+		Event e1 = new Event(UUID.fromString("c81d4e2e-bcf2-11e6-869b-7df92533d2db"), "Events Name: Dinner", "11-01-2019 16:41:29", "10564 30th Dr NE, Seattle, WA" );
+		Event e2 = new Event(UUID.fromString("c81d4e5e-bcf2-11e6-869b-7df92536d2db"), "Events Name: Lunch", "11-01-2019 12:41:29", "10564 30th Dr NE, Seattle, WA" );
+		
+		List<Event> list = new ArrayList<>();	
+		return list;
+	}	
+}

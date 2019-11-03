@@ -1,0 +1,10 @@
+package org.jimzh.mini.events.resources;
+
+import org.junit.Test;
+
+@SpringBootTest
+public class EventServiceTest {
+
+	@Test
+	public void contextLoads();
+}

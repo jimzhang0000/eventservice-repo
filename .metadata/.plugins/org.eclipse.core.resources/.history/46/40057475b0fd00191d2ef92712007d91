@@ -1,0 +1,31 @@
+package org.jimzh.mini.events.resources;
+
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.jimzh.mini.events.model.Event;
+import org.jimzh.mini.events.service.EventService;
+
+@Path("/events_list_all")
+public class EventsResource {
+
+	EventService eventservice = new EventService();
+	
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Event> getEvents() {
+		return eventservice.getAllEvents();
+	}
+	
+	@GET
+	@Path("/test")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String test() {
+		return "test";
+	}
+	
+}

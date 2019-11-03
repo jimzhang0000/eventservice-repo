@@ -1,0 +1,10 @@
+package org.jimzh.mini.events.resources;
+
+@Path("/events")
+public class EventsResource {
+
+	public String getEvents() {
+		return "Hello World!";
+	
+	}
+}

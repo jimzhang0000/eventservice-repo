@@ -1,0 +1,15 @@
+package org.jimzh.mini.events.model;
+
+import java.util.Date;
+import java.util.UUID;
+
+
+public class Event {
+	private UUID Id;
+	private String Name;
+	private Date EventDate;
+	private String Address;
+	
+	
+
+}

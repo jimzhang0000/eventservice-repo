@@ -1,0 +1,46 @@
+package org.jimzh.mini.events.model;
+
+import java.util.Date;
+import java.util.UUID;
+
+public class Event {
+	private UUID Id;
+	private String Name;
+	private Date EventDate;
+	private String Address;
+	
+	public Event(UUID ID, String Name, Date EventDate, String Address) {
+		
+		
+		
+	}
+	
+	public UUID getId() {
+		return Id;
+	}
+	public void setId(UUID id) {
+		Id = id;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public Date getEventDate() {
+		return EventDate;
+	}
+	public void setEventDate(Date eventDate) {
+		EventDate = eventDate;
+	}
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	
+	
+
+}

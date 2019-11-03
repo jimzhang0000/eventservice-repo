@@ -1,0 +1,47 @@
+package org.jimzh.mini.events.service;
+
+import java.util.UUID;
+import org.jimzh.mini.events.database.DbClass;
+import org.jimzh.mini.events.model.Event;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class EventService {
+
+	private Map<UUID, Event> events = DbClass.getEvents();
+	
+	public EventService() {
+		events.put(UUID.randomUUID(), new Event(UUID.randomUUID(), "Events: Breakfast", null, "10564 30th Dr NE, Seattle, WA" ));
+		events.put(UUID.randomUUID(), new Event(UUID.randomUUID(), "Events: Lunch", null, "10896 31th Dr NE, Seattle, WA" ));
+		events.put(UUID.randomUUID(), new Event(UUID.randomUUID(), "Events: Dinner", null, "10896 31th Dr NE, Seattle, WA" ));
+	}
+	public Event getEvent(UUID Id) {
+		return events.get(Id);
+	}
+	
+	public List<Event> getAllEvents() {
+		return new ArrayList<Event>(events.values());
+	}
+	
+	public Event addEvent(Event event) {
+		event.setId(UUID.randomUUID());
+		events.put(event.getId(), event);
+		return event;
+	}
+	
+
+//	public List<Event> getAllEvents() {
+//		Event e1 = new Event(UUID.randomUUID(), "Events: Dinner", null, "10564 30th Dr NE, Seattle, WA" );
+//		Event e2 = new Event(UUID.randomUUID(), "Events: Breakfast", null, "10896 31th Dr NE, Seattle, WA" );
+//		Event e3 = new Event(UUID.randomUUID(), "Events: Lunch", null, "10894 32th Dr NE, Seattle, WA" );
+//		
+//		List<Event> list = new ArrayList<>();
+//		list.add(e1);
+//		list.add(e2);
+//		list.add(e3);
+//		return list;
+//	}
+
+		
+}

@@ -16,7 +16,7 @@ REST API:
 1) List all events: (with built in web browser in IDE or in PostMan)
 http://localhost:8080/eventservice/webapi/events
 2) Add one event
-With Postman, setup the application/xml in header,
+With Postman, using POST method, setup the application/xml in header,
 input the raw data as:
  
 <event>
@@ -39,3 +39,7 @@ The Id and Date will be system generated
 
    Runtime exception will be thrown with 404 error if
    there is no such Id
+
+TEST:
+Wrote the corresponding JUNIT5 test cases. (note: the test cases need to be enhanced, should use assertEquals(), as I got the null pointer exceptions, used assertNull instead to let it pass, this bug should be resolved) 
+Right click the mouse on the EventServiceTest.java file, select the "JUNIT test" in Eclipse IDE, all three tests passed.

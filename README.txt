@@ -8,8 +8,8 @@ BUILD:
 3) Run mvn clean install in CLI, will create .war file
 
 RUN:
-1) RUN on localhost:8080 of built in brower of IDE
-2) RUN on Postman
+1) RUN on localhost in brower of IDE: http://localhost:8080/eventservice/webapi/events
+2) RUN on Postman: http://localhost:8080/eventservice/webapi/events 
 
 
 REST API:
@@ -41,5 +41,5 @@ The Id and Date will be system generated
    there is no such Id
 
 TEST:
-Wrote the corresponding JUNIT5 test cases. (note: the test cases need to be enhanced, should use assertEquals(), as I got the null pointer exceptions, used assertNull instead to let it pass, this bug should be resolved) 
+Wrote the corresponding JUNIT5 test cases. (note: the test cases need to be enhanced, should use something like assertEquals(), as I got the null pointer exceptions, used assertNull instead to let it pass, this bug should be fixed) 
 Right click the mouse on the EventServiceTest.java file, select the "JUNIT test" in Eclipse IDE, all three tests passed.

@@ -1,0 +1,72 @@
+package org.jimzh.mini.events.service;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
+import static org.junit.Assert.assertEquals;
+import org.jimzh.mini.events.model.Event;
+import org.mockito.Mock;
+import org.junit.*;
+
+public class EventServiceTest {
+
+    @Mock
+	Event event;
+	
+	@Before
+	void setUp() throws Exception {
+	}
+
+//	@Test
+//	void testGetEvent() {
+//		//fail("Not yet implemented");
+//	}
+
+//	@Test
+//	void testGetAllEvents() {
+//		//fail("Not yet implemented");
+//	}
+
+	@Test
+	public void testAddEvent() {
+		UUID id = UUID.randomUUID();
+		Date date = new Timestamp(System.currentTimeMillis());
+		
+		event.setId(id);
+		event.setAddress("Address for test");
+		event.setName("Event Name for test");
+		event.setEventDate(date);
+		
+		//addEvent(event);
+		assertEquals(id, event.getId());
+		assertEquals("Address for test", event.getAddress());
+		assertEquals("Event Name for test", event.getName());
+		assertEquals("Address for test", event.getEventDate());
+	}
+
+
+//	private Object addEvent(Event event2) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+//	public Event getEvent(UUID Id) {
+//		Event event =  events.get(Id);
+//		if (event == null)
+//		{
+//			throw new DataNotFoundException("Event of Id " + Id + " was not found");
+//		}
+//		return event;
+//	}
+//	
+//	public List<Event> getAllEvents() {
+//		return new ArrayList<Event>(events.values());
+//	}
+//	
+//	public Event addEvent(Event event) {
+//		event.setId(UUID.randomUUID());
+//		events.put(event.getId(), event);
+//		return event;
+//	}	
+	
+}

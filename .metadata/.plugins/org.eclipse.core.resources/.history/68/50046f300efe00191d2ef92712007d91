@@ -1,0 +1,68 @@
+package org.jimzh.mini.events.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.jimzh.mini.events.exception.DataNotFoundException;
+import org.jimzh.mini.events.model.Event;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.*;
+import org.junit.Assert;
+import org.junit.*;
+
+class EventServiceTest {
+
+    @Mock
+	Event event;
+	
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@Test
+	void testGetEvent() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllEvents() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddEvent() {
+		//fail("Not yet implemented");
+		AssertEquals(event, addEvent(event));
+		
+	}
+
+	private Object addEvent(Event event2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	public Event getEvent(UUID Id) {
+//		Event event =  events.get(Id);
+//		if (event == null)
+//		{
+//			throw new DataNotFoundException("Event of Id " + Id + " was not found");
+//		}
+//		return event;
+//	}
+//	
+//	public List<Event> getAllEvents() {
+//		return new ArrayList<Event>(events.values());
+//	}
+//	
+//	public Event addEvent(Event event) {
+//		event.setId(UUID.randomUUID());
+//		events.put(event.getId(), event);
+//		return event;
+	}	
+	
+}

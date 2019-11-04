@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EventServiceTest" project="eventservice" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="org.jimzh.mini.events.service.EventServiceTest" time="0.459">
+    <testcase name="testGetEvent" classname="org.jimzh.mini.events.service.EventServiceTest" time="0.0"/>
+    <testcase name="testAddEvent" classname="org.jimzh.mini.events.service.EventServiceTest" time="0.459"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,142 @@
+package org.jimzh.mini.events.service;
+
+import static org.junit.Assert.assertEquals;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
+import org.jimzh.mini.events.model.Event;
+import org.mockito.Mock;
+import org.junit.*;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertNull;
+//import static org.junit.Test.*;
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
+
+import org.junit.jupiter.*;
+import org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+
+import org.jimzh.mini.events.database.*;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@RunWith(JUnitPlatform.class)
+public class EventServiceTest {
+
+    @Autowired
+   	Event event;
+    
+    @Autowired
+    DbClass dbclass;
+    
+    @Autowired
+    EventService eventservice;
+    
+	@BeforeEach
+	public void setUp() throws Exception {
+		
+	}
+
+	public EventServiceTest() {
+	}
+	
+//	@Test
+//	public void testAddEvent() {
+//		UUID id = UUID.randomUUID();
+//		Date date = new Timestamp(System.currentTimeMillis());
+//		
+//		Event event = new Event();
+//		event.setId(id);
+//		event.setAddress("Address1");
+//		event.setName("Event1");
+//		event.setEventDate(date);
+//		assertEquals(id, event.getId());
+//		assertEquals("Address1", event.getAddress());
+//		assertEquals("Event1", event.getName());
+//		assertEquals(date, event.getEventDate());
+//	}
+
+	@Test
+	public void testGetEvent() {
+		UUID id = UUID.randomUUID();
+		Date date = new Timestamp(System.currentTimeMillis());
+		
+		Event event = new Event();
+		EventService eventservice = new EventService();
+		
+		event.setId(id);
+		event.setAddress("Address1");
+		event.setName("Event1");
+		event.setEventDate(date);
+		
+		eventservice.addEvent(event);
+		Map<UUID, Event> map = new HashMap<>();
+		map = (HashMap<UUID, Event>) DbClass.getEvents();
+		Event event1 = new Event();
+		event1 = map.get(id);
+
+		//assertEquals(event1.getId(), id);
+		assertEquals(event1.getAddress(), "Address1");
+		
+	    //when(dbclass.getEvents()).thenReturn(null);
+	}
+	
+//	@Test
+//	public void testGetEvent() {
+//		UUID id = UUID.randomUUID();
+//		Date date = new Timestamp(System.currentTimeMillis());
+//		Event event = new Event();
+//		event.setId(id);
+//		event.setAddress("Address2");
+//		event.setName("Event2");
+//		event.setEventDate(date);
+//		
+//		EventService eventservice = new EventService();
+//		eventservice.addEvent(event);
+//		
+//		Event event1 = new Event();
+//		event1 = eventservice.getEvent(id);
+//		assertNotNull(event1);
+//		assertEquals(event, event1);
+//		//when(eventservice.getEvent(id)).thenReturn(event1);
+//	}
+
+//	@Test
+//	public void testGetAllEvents() {
+//		//fail("Not yet implemented");
+//	}
+
+//	public Event getEvent(UUID Id) {
+//		Event event =  events.get(Id);
+//		if (event == null)
+//		{
+//			throw new DataNotFoundException("Event of Id " + Id + " was not found");
+//		}
+//		return event;
+//	}
+//	
+//	public List<Event> getAllEvents() {
+//		return new ArrayList<Event>(events.values());
+//	}
+//	
+//	public Event addEvent(Event event) {
+//		event.setId(UUID.randomUUID());
+//		events.put(event.getId(), event);
+//		return event;
+//	}	
+	
+}

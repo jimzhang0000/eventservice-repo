@@ -1,0 +1,29 @@
+package org.jimzh.mini.events.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+class EventServiceTest {
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@Test
+	void testGetEvent() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAllEvents() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddEvent() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EventServiceTest" project="eventservice" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="org.jimzh.mini.events.service.EventServiceTest" time="1.603">
+    <testsuite name="JUnit Jupiter" time="1.596">
+      <testsuite name="EventServiceTest" time="1.596">
+        <testcase name="testGetEvent()" classname="EventServiceTest" time="1.583"/>
+        <testcase name="testGetAllEvents()" classname="EventServiceTest" time="0.013"/>
+      </testsuite>
+    </testsuite>
+    <testcase name="JUnit Vintage" classname="JUnit Vintage" time="0.007"/>
+  </testsuite>
+</testrun>

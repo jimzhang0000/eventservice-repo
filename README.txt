@@ -1,4 +1,16 @@
-# eventservice-repo
+REPO: pushed to git resposiry in GITHUB. Repository name: # eventservice-repo
+URL: https://github.com/jimzhang0000/eventservice-repo
+I will make it public for you to access
+
+BUILD:
+1) Automatically build with Eclipse Neon
+2) Project can be maven build in Eclipse IDE
+3) Run mvn clean install in CLI, will create .war file
+
+RUN:
+1) RUN on localhost:8080 of built in brower of IDE
+2) RUN on Postman
+
 
 REST API:
 1) List all events: (with built in web browser in IDE or in PostMan)
@@ -25,5 +37,5 @@ The Id and Date will be system generated
 
    http://localhost:8080/eventsource/webapi/1234
 
-   Runtime exception will be thrown and catch with 404 error if
+   Runtime exception will be thrown with 404 error if
    there is no such Id

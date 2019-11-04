@@ -1,0 +1,7 @@
+package org.jimzh.mini.events;
+
+import org.junit.Test;
+
+public class EventServiceJunitTest {
+
+}

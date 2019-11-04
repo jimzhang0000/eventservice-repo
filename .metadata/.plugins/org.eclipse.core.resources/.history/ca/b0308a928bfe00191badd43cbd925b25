@@ -1,0 +1,94 @@
+package org.jimzh.mini.events.service;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
+import org.jimzh.mini.events.model.Event;
+import org.mockito.Mock;
+import org.junit.*;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertNull;
+//import static org.junit.Test.*;
+//import org.junit.Test;
+//import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Assertions.*;
+
+
+public class EventServiceTest {
+
+    @Mock
+   	Event event;
+    
+    EventService eventservice;
+    
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+
+	public EventServiceTest() {
+	}
+	
+	@Test
+	public void testAddEvent() {
+		UUID id = UUID.randomUUID();
+		Date date = new Timestamp(System.currentTimeMillis());
+		
+		Event event = new Event();
+		event.setId(id);
+		event.setAddress("Address1");
+		event.setName("Event1");
+		event.setEventDate(date);
+		assertEquals(id, event.getId());
+		assertEquals("Address1", event.getAddress());
+		assertEquals("Event1", event.getName());
+		assertEquals(date, event.getEventDate());
+	}
+
+	@Test
+	public void testGetEvent() {
+		UUID id = UUID.randomUUID();
+		Date date = new Timestamp(System.currentTimeMillis());
+		Event event = new Event();
+		event.setId(id);
+		event.setAddress("Address2");
+		event.setName("Event2");
+		event.setEventDate(date);
+		
+		EventService eventservice = new EventService();
+		eventservice.addEvent(event);
+		
+		Event event1 = new Event();
+		event1 = eventservice.getEvent(id);
+		assertNotNull(event1);
+		assertEquals(event, event1);
+		//when(eventservice.getEvent(id)).thenReturn(event1);
+	}
+
+	@Test
+	public void testGetAllEvents() {
+		//fail("Not yet implemented");
+	}
+
+//	public Event getEvent(UUID Id) {
+//		Event event =  events.get(Id);
+//		if (event == null)
+//		{
+//			throw new DataNotFoundException("Event of Id " + Id + " was not found");
+//		}
+//		return event;
+//	}
+//	
+//	public List<Event> getAllEvents() {
+//		return new ArrayList<Event>(events.values());
+//	}
+//	
+//	public Event addEvent(Event event) {
+//		event.setId(UUID.randomUUID());
+//		events.put(event.getId(), event);
+//		return event;
+//	}	
+	
+}

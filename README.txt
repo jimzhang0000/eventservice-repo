@@ -5,7 +5,7 @@ I will make it public for you to access
 BUILD:
 1) Automatically build with Eclipse Neon
 2) Project can be maven build in Eclipse IDE
-3) Run mvn clean install in CLI, will create .war file
+3) Run mvn clean install in Shell, will create .war file
 
 RUN:
 1) RUN on localhost in brower of IDE: http://localhost:8080/eventservice/webapi/events
@@ -41,5 +41,4 @@ The Id and Date will be system generated
    there is no such Id
 
 TEST:
-Wrote the corresponding JUNIT5 test cases. (note: the test cases need to be enhanced, should use something like assertEquals(), as I got the null pointer exceptions, used assertNull instead to let it pass, this bug should be fixed) 
 Right click the mouse on the EventServiceTest.java file, select the "JUNIT test" in Eclipse IDE, all three tests passed.

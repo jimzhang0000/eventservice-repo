@@ -7,7 +7,7 @@ import org.jimzh.mini.events.model.Event;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
@@ -20,12 +20,17 @@ import org.mockito.InjectMocks;
 
 @RunWith(JUnitPlatform.class)
 public class EventServiceTest {
-
+		
 	@Mock
 	@Autowired
-    DbClass dbclass;
-    
+    Event event;
+	
+	@Mock
+	@Autowired
+	DbClass dbclass;
+	
 	@InjectMocks
+	@Autowired
     EventService eventservice;
     
 	@BeforeEach
@@ -37,45 +42,67 @@ public class EventServiceTest {
 	}
 	
 	@Test
-	public void testAddEvent() {
-		UUID id = UUID.randomUUID();
+	final void testGetEvent() {
 		Date date = new Timestamp(System.currentTimeMillis());		
-		Event event = new Event();
-		event.setId(id);
-		event.setAddress("Address1");
-		event.setName("Event1");
-		event.setEventDate(date);	
-		EventService eventservice = new EventService();
-		eventservice.addEvent(event);	
-		Map<UUID, Event> map = new HashMap<>();
-		map = (HashMap<UUID, Event>) DbClass.getEvents();
-		Event event1 = new Event();
-		event1 = map.get(id);
-		assertNull(event1);
-	}
-
-	@Test
-	public void testGetEvent() {
-		UUID id = UUID.randomUUID();
-		Date date = new Timestamp(System.currentTimeMillis());		
-		Event event = new Event();
-		EventService eventservice = new EventService();	
-		event.setId(id);
-		event.setAddress("Address1");
-		event.setName("Event1");
+		Event event = new Event();		
+		event.setAddress("Address of Nike");
+		event.setName("Event Name");
 		event.setEventDate(date);	
 		eventservice.addEvent(event);
-		Map<UUID, Event> map = new HashMap<>();
-		map = (HashMap<UUID, Event>) DbClass.getEvents();
-		Event event1 = new Event();
-		event1 = map.get(id);
-		assertNull(event1);
+		UUID id=event.getId();
+		event = eventservice.getEvent(id);	
+		assertNotNull(event);
+		assertEquals(id, eventservice.getEvent(id).getId());
+		assertEquals("Address of Nike", event.getAddress());
+		assertEquals("Event Name", event.getName());
+		assertEquals(date, event.getEventDate());
 	}
 	
 	@Test
-	public void testGetAllEvents() {
+	final void testAddEvent() {
+		Date date = new Timestamp(System.currentTimeMillis());		
+		Event event = new Event();		
+		event.setAddress("Address of Event");
+		event.setName("Event Name: Lunch");
+		event.setEventDate(date);	
+		eventservice.addEvent(event);
+		assertNotNull(event);
+		Event event1 = new Event();
+		UUID id=event.getId();
+		event1 = DbClass.getEvents().get(id);		
+		assertEquals(event1, eventservice.getEvent(id));
+		assertEquals(id, eventservice.getEvent(id).getId());
+		assertEquals("Address of Event", eventservice.getEvent(id).getAddress());
+		assertEquals("Event Name: Lunch", eventservice.getEvent(id).getName());
+		assertEquals(date, eventservice.getEvent(id).getEventDate());
+	}
+	
+	@Test
+	final void testGetAllEvents() {	
+		Date date = new Timestamp(System.currentTimeMillis());		
+		Event event = new Event();		
+		event.setAddress("Address1");
+		event.setName("Event1: Lunch");
+		event.setEventDate(date);	
+		eventservice.addEvent(event);		
+		UUID id=event.getId();
+		Date date2 = new Timestamp(System.currentTimeMillis());		
+		Event event2 = new Event();		
+		event2.setAddress("Address2");
+		event2.setName("Event2: Dinner");
+		event2.setEventDate(date2);	
+		eventservice.addEvent(event2);	
+		UUID id2=event2.getId();
 		Map<UUID, Event> map = new HashMap<>();
-		map = (HashMap<UUID, Event>) DbClass.getEvents();
-		assertNotNull(map);
+		
+		map = DbClass.getEvents();
+		assertEquals(event, map.get(id));
+		assertEquals(event2, map.get(id2));		
+		assertEquals("Address1", map.get(id).getAddress());
+		assertEquals("Event1: Lunch", map.get(id).getName());
+		assertEquals(date, map.get(id).getEventDate());
+		assertEquals("Address2", map.get(id2).getAddress());
+		assertEquals("Event2: Dinner", map.get(id2).getName());
+		assertEquals(date, map.get(id2).getEventDate());
 	}
 }

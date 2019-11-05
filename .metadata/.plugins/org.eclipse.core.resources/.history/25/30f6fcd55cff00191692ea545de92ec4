@@ -1,0 +1,97 @@
+package org.jimzh.mini.events.service;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
+import org.jimzh.mini.events.model.Event;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+import org.jimzh.mini.events.database.*;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+
+@RunWith(JUnitPlatform.class)
+//@IncludeEngines("junit-jupiter")
+//@SelectPackages("org.jimzh.mini.events")
+public class EventServiceTest {
+
+	@Mock
+	//@Autowired
+    DbClass dbclass;
+	
+	@Mock
+	Event event;
+	
+	@InjectMocks
+    EventService eventservice;
+    
+	@BeforeEach
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
+	}
+
+	public EventServiceTest() {
+	}
+	
+	@Test
+	final void testAddEvent() {
+		UUID id = UUID.randomUUID();
+		Date date = new Timestamp(System.currentTimeMillis());		
+		Event event = new Event();
+		event.setId(id);
+		event.setAddress("Address1");
+		event.setName("Event1");
+		event.setEventDate(date);	
+		EventService eventservice = new EventService();
+		eventservice.addEvent(event);	
+		Map<UUID, Event> map = new HashMap<>();
+		map = (HashMap<UUID, Event>) DbClass.getEvents();
+		Event event1 = new Event();
+		event1 = map.get(id);
+		assertNull(event1);
+	}
+
+	@Test
+	final void testGetEvent() {
+		UUID id = UUID.randomUUID();
+		System.out.println("The id at p1 is:  " + id);
+		Date date = new Timestamp(System.currentTimeMillis());		
+		Event event = new Event();
+		EventService eventservice = new EventService();	
+		event.setId(id);
+		event.setAddress("Address of Nike");
+		event.setName("Event Name");
+		event.setEventDate(date);	
+		eventservice.addEvent(event);
+
+		System.out.println("The map is: " +  DbClass.getEvents());
+	
+		System.out.println("The event is: " +  event);
+		Event event1 = new Event();
+		System.out.println("The id at p2 is:  " + id);
+		event1 = DbClass.getEvents().get(id);
+		
+		System.out.println("The event1 is: " +  event1);
+		//assertNull(event1);
+		//assertEquals("Event1", event1.getName() );
+		assertNotEquals(id, eventservice.getEvent(id));
+		
+	}
+	
+	@Test
+	final void testGetAllEvents() {
+		Map<UUID, Event> map = new HashMap<>();
+		map = (HashMap<UUID, Event>) DbClass.getEvents();
+		assertNotNull(map);
+	}
+}

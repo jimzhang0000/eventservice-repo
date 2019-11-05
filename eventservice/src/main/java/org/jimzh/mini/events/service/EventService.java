@@ -15,6 +15,13 @@ public class EventService {
 	public EventService() {
 		
 	}
+	
+	public Event addEvent(Event event) {
+		event.setId(UUID.randomUUID());
+		events.put(event.getId(), event);	
+		return event;
+	}
+	
 	public Event getEvent(UUID Id) {
 		Event event =  events.get(Id);
 		if (event == null)
@@ -26,11 +33,5 @@ public class EventService {
 	
 	public List<Event> getAllEvents() {
 		return new ArrayList<Event>(events.values());
-	}
-	
-	public Event addEvent(Event event) {
-		event.setId(UUID.randomUUID());
-		events.put(event.getId(), event);
-		return event;
 	}	
 }

@@ -47,8 +47,4 @@ public class Event {
 	public void setAddress(String address) {
 		Address = address;
 	}
-
-	
-	
-
 }
